@@ -62,6 +62,5 @@ for k in K_VALS:
             reweights = sampler.reweight()
 
             weights[X_ids] += reweights * A
-            print(resample)
         np.savetxt('learned_weights/'+str(k)+'-'+str(p).replace('.','_')+'.csv',\
                    weights, delimiter=',')
