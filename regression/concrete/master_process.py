@@ -10,13 +10,13 @@ from sklearn import neighbors
 import sys
 
 # Load data.
-data = da.Airfoil()
+data = da.Concrete()
 X, y = data.Data()
 _, nFeats = np.shape(X)
 
 # Values of parameter k to iterate over.
 #K_VALS = [3, 5, 7, 9, 11, 13, 15]
-K_VALS = [7]
+K_VALS = [5]
 
 """
 Some important variables.
@@ -24,7 +24,7 @@ Some important variables.
 #r = 30
 #k = 5
 A = 1
-n_iters = 1000 
+n_iters = 1000
 k_vals = [3, 5, 7, 9, 11, 13, 15]
 perc = [0.05, 0.1, 0.25]
 n_samples = len(X)
@@ -62,5 +62,6 @@ for k in K_VALS:
             reweights = sampler.reweight()
 
             weights[X_ids] += reweights * A
+            print(resample)
         np.savetxt('learned_weights/'+str(k)+'-'+str(p).replace('.','_')+'.csv',\
                    weights, delimiter=',')
